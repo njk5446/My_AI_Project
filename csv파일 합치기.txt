@@ -1,0 +1,2 @@
+
+해당폴더url>copy*.csv 파일명.csv

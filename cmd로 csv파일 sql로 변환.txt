@@ -1,0 +1,19 @@
+C:\Users\user>mysql --local-infile -u scott -p
+Enter password: tiger
+
+mysql> use risk_analysis;
+Database changed
+mysql> LOAD DATA LOCAL INFILE'C:/Program Files/MySQL/MySQL Server 8.0/Uploads/UserVitalSign.csv' IGNORE INTO TABLE risk_analysis.user_vital_sign
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(no, work_date, user_code, agency_code, is_wear, heartbeat, temperature, outside_temperature, latitude, longitude, device_battery);
+
+
+
+에러 발생시
+ERROR 3948 (42000): Loading local data is disabled; this must be enabled on both the client and server sides
+set global local_infile=true; (이거 입력)
+
+skipped 나오는 이유:  userCode: -1, 51 안 쓰는 데이터들은 내가 상위 테이블(user)에서 적어놓질 않아서 그럼
